@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Add this specifically */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* Optional: This makes the scroll even softer on Macs */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
