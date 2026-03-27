@@ -143,6 +143,22 @@ const handleSubmit = async (e) => {
       setStatus("ERROR");
     }
   };
+
+  // 1. Logic for the Button
+const buttonVariants = {
+  hover: {
+    scale: 1.05,
+    backgroundColor: "#1d4ed8",
+    boxShadow: "0px 0px 25px rgba(37, 99, 235, 0.4)",
+  }
+};
+
+// 2. Logic for the Arrow
+const arrowVariants = {
+  initial: { x: 0 },
+  hover: { x: 5 } // Moves the arrow when the parent is hovered
+};
+
   return (
     <div className={`min-h-screen font-sans transition-colors duration-500 ${themeClasses}`}>
       
@@ -212,28 +228,39 @@ const handleSubmit = async (e) => {
     Building high-performance applications and crafting seamless user experiences with modern tech stacks.
   </p>
           <div className="flex flex-wrap gap-6 items-center">
-            <motion.a
-  // 1. Link Settings
-  href="#contact"
-  onClick={(e) => handleScroll(e, 'project')} // Uses the smooth scroll function
-  
-  // 2. Alive Animations
-  whileHover={{ scale: 1.05 }}
+            <motion.button
+  // 1. Stable Scroll (No URL change)
+  onClick={(e) => handleScroll(e, 'contact')}
+
+  // 2. All-in-One Animation (No separate variables needed)
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  whileHover="hoverState" // This "talks" to the arrow below
   whileTap={{ scale: 0.95 }}
   
-  // 3. Styling
-  className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center gap-3 shadow-lg shadow-blue-600/30 cursor-pointer transition-colors hover:bg-blue-700 inline-flex"
->
-  Get in Touch
-  
-  {/* Arrow Icon that moves */}
+  // This handles the button's own hover look
+  variants={{
+    hoverState: { 
+      scale: 1.05, 
+      backgroundColor: "#1d4ed8",
+      boxShadow: "0px 10px 20px rgba(37, 99, 235, 0.3)" 
+    }
+  }}
+
+  // 3. Styling (Pulls the button up with -top-4)
+  className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center gap-3 shadow-lg shadow-blue-600/30 cursor-pointer transition-all border-none outline-none">
+  <span>Get in Touch</span>
+
+  {/* The Arrow Icon - It listens for "hoverState" from the parent */}
   <motion.span
-    variants={{ hovered: { x: 5 } }}
+    variants={{
+      hoverState: { x: 5 } // Moves the arrow 5px right
+    }}
     transition={{ type: "spring", stiffness: 400 }}
   >
     <ArrowRight size={18} />
   </motion.span>
-</motion.a>
+</motion.button>
 
             <div className="flex gap-3 mt-4">
   {socials.map(({ Icon, link }, i) => (
@@ -306,28 +333,40 @@ const handleSubmit = async (e) => {
             <div><h4 className="text-3xl font-black">02+</h4><p className="text-[10px] text-gray-500 uppercase font-bold mt-2">Years Experience</p></div>
           </div>
 
-        <motion.a
-  // 1. Link Settings
-  href="#projects"
-  onClick={(e) => handleScroll(e, 'project')} // Uses the smooth scroll function
-  
-  // 2. Alive Animations
-  whileHover={{ scale: 1.05 }}
+        <motion.button
+  // 1. Stable Scroll (Scrolls to projects section without changing URL)
+  onClick={(e) => handleScroll(e, 'projects')}
+
+  // 2. Animation Logic (Matches Get In Touch exactly)
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  whileHover="hoverState"
   whileTap={{ scale: 0.95 }}
   
-  // 3. Styling
-  className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center gap-2 shadow-lg shadow-blue-600/30 cursor-pointer transition-colors hover:bg-blue-700 inline-flex"
+  // This handles the button look on hover
+  variants={{
+    hoverState: { 
+      scale: 1.05, 
+      backgroundColor: "#1d4ed8", // Changes to a slightly darker blue
+      boxShadow: "0px 10px 20px rgba(37, 99, 235, 0.3)" 
+    }
+  }}
+
+  // 3. Styling (Aligned equal, no -top-4)
+  className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center gap-3 shadow-lg shadow-blue-600/30 cursor-pointer transition-all border-none outline-none"
 >
-  View Projects
-  
-  {/* Arrow Icon that moves */}
+  <span>View Projects</span>
+
+  {/* The Arrow Icon - animates with the button */}
   <motion.span
-    variants={{ hovered: { x: 5 } }}
+    variants={{
+      hoverState: { x: 5 } // Moves arrow right when button is hovered
+    }}
     transition={{ type: "spring", stiffness: 400 }}
   >
     <ArrowRight size={18} />
   </motion.span>
-</motion.a>
+</motion.button>
 
         </div>
       </section>
