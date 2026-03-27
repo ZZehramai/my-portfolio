@@ -7,11 +7,33 @@ import {
 
 
 const App = () => {
+
+  // --- THE BULLETPROOF SCROLL FUNCTION ---
+  const handleScroll = (e, id) => {
+    e.preventDefault(); // 1. Stops the URL from changing
+    e.stopPropagation(); // 2. Stops any other events from firing
+    
+    const element = document.getElementById(id);
+    if (element) {
+      const navbarHeight = 90; // The height of your navigation bar
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
   // Theme State (Start with Dark Mode)
 const [isDark, setIsDark] = useState(true);
 const [activeTab, setActiveTab] = useState('Tech');
 const toggleTheme = () => setIsDark(!isDark);
 const [status, setStatus] = useState("IDLE");
+
+
 
 
 // Put this near your isDark state
@@ -139,15 +161,15 @@ const handleSubmit = async (e) => {
       </span>
     </div>
 
-          <div className="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest opacity-60">
-            <a href="#" className="hover:text-blue-500 transition">Home</a>
-            <a href="#about" className="hover:text-blue-500 transition">About</a>
-            <a href="#skills" className="hover:text-blue-500 transition">Skills</a>
-            <a href="#projects" className="hover:text-blue-500 transition">Projects</a>
-            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
-          </div>
-
-          <div className="flex items-center gap-4">
+          <div className="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+  <a href="#" onClick={(e) => handleScroll(e, 'home')} className="hover:text-blue-500 transition">Home</a>
+  <a href="#" onClick={(e) => handleScroll(e, 'about')} className="hover:text-blue-500 transition">About</a>
+  <a href="#" onClick={(e) => handleScroll(e, 'skills')} className="hover:text-blue-500 transition">Skills</a>
+  <a href="#" onClick={(e) => handleScroll(e, 'projects')} className="hover:text-blue-500 transition">Projects</a>
+  <a href="#" onClick={(e) => handleScroll(e, 'contact')} className="hover:text-blue-500 transition">Contact</a>
+</div>
+          
+             <div className="flex items-center gap-4">
             {/* THEME TOGGLE BUTTON */}
             <button 
               onClick={toggleTheme}
@@ -461,7 +483,7 @@ const handleSubmit = async (e) => {
 </section>
   
       {/* --- Contact Section --- */}
-<section id="contact" className={`py-20 px-6 scroll-mt-10 transition-colors duration-500 ${isDark ? 'bg-[#050a18]' : 'bg-slate-50'}`}>
+<section id="contact" className={`py-10 px-6 scroll-mt-10 transition-colors duration-500 ${isDark ? 'bg-[#050a18]' : 'bg-slate-50'}`}>
   <div className="max-w-7xl mx-auto w-full">
     
     <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
