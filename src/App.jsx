@@ -25,6 +25,8 @@ const App = () => {
         top: offsetPosition,
         behavior: 'smooth'
       });
+
+      window.history.replaceState(null, null, ' ');
     }
   }
   // Theme State (Start with Dark Mode)
@@ -162,11 +164,11 @@ const handleSubmit = async (e) => {
     </div>
 
           <div className="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
-  <a href="#" onClick={(e) => handleScroll(e, 'home')} className="hover:text-blue-500 transition">Home</a>
-  <a href="#" onClick={(e) => handleScroll(e, 'about')} className="hover:text-blue-500 transition">About</a>
-  <a href="#" onClick={(e) => handleScroll(e, 'skills')} className="hover:text-blue-500 transition">Skills</a>
-  <a href="#" onClick={(e) => handleScroll(e, 'projects')} className="hover:text-blue-500 transition">Projects</a>
-  <a href="#" onClick={(e) => handleScroll(e, 'contact')} className="hover:text-blue-500 transition">Contact</a>
+  <button onClick={(e) => handleScroll(e, 'home')} className="hover:text-blue-500 transition cursor-pointer">Home</button>
+  <button onClick={(e) => handleScroll(e, 'about')} className="hover:text-blue-500 transition cursor-pointer">About Me</button>
+  <button onClick={(e) => handleScroll(e, 'skills')} className="hover:text-blue-500 transition cursor-pointer">Skills</button>
+  <button onClick={(e) => handleScroll(e, 'projects')} className="hover:text-blue-500 transition cursor-pointer">Projects</button>
+  <button onClick={(e) => handleScroll(e, 'contact')} className="hover:text-blue-500 transition cursor-pointer text-left">Contact</button>
 </div>
           
              <div className="flex items-center gap-4">
