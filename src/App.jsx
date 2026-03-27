@@ -280,9 +280,9 @@ const handleSubmit = async (e) => {
       </header>
 
       {/* --- About me Section --- */}
-      <section id="about" className="py-32 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+      <section id="about" className="py-12 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-15 items-center">
         <div className="relative">
-          <div className="absolute -left-10 bottom-0 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
+          <div className="absolute -left-10 bottom-0 w-40 h-30 bg-blue-600/20 rounded-full blur-2xl"></div>
           <div className="relative border-4 border-blue-600/30 rounded-full p-4">
              <img 
                src="me1.jpg" 
@@ -296,7 +296,7 @@ const handleSubmit = async (e) => {
           <h2 className="text-4xl md:text-5xl font-black mt-4 mb-8 leading-tight uppercase">
             I AM AVAILABLE FOR <br/> <span className="text-blue-500">SOFTWARE PROJECTS</span>
           </h2>
-          <p className="text-gray-400 mb-10 leading-relaxed">
+          <p className="text-gray-400 mb-6 leading-relaxed">
             I build modern digital experiences that are fast, accessible, and beautiful. 
             My engineering process focuses on scalability and clean code architecture.
           </p>
@@ -316,7 +316,7 @@ const handleSubmit = async (e) => {
   whileTap={{ scale: 0.95 }}
   
   // 3. Styling
-  className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center gap-3 shadow-lg shadow-blue-600/30 cursor-pointer transition-colors hover:bg-blue-700 inline-flex"
+  className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-sm uppercase tracking-widest flex items-center gap-2 shadow-lg shadow-blue-600/30 cursor-pointer transition-colors hover:bg-blue-700 inline-flex"
 >
   View Projects
   
